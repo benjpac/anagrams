@@ -8,7 +8,7 @@ get('/') do
   erb(:index)
 end
 
-get('/find_and_replace_result') do
-  @display = params.fetch("word2").find_and_replace(params.fetch("find"), params.fetch("replace"))
-  erb(:find_and_replace_result)
+get('/anagrams_result') do
+  @display = params.fetch("first_word").all_tests(params.fetch("second_word"))
+  erb(:anagrams_result)
 end
