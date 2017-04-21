@@ -21,6 +21,9 @@ describe('Array#word?') do
   it("return false if word does not have a vowel or y") do
     expect(["z", "w", "b", "s"].word?()).to eq(false)
   end
+  it("return false if word does not have a vowel or y") do
+    expect(["o", "e", "l", "l", "h"].word?()).to eq(true)
+  end
 end
 
 describe('Array#remove_if_present') do
@@ -57,14 +60,7 @@ describe('String#palindrome?') do
 end
 
 describe('String#all_tests') do
-  # it("return true even if words have different case") do
-  #   expect("Tea".all_tests("eat")).to eq(true)
-  # end
-  # "all tests failed. words are not the same length"
-  # it("returns true if phrases are anagrams") do
-  #   expect("aaa bbb ccc".all_tests("abc abc abc")).to eq(true)
-  # end
-  # it("returns true if phrases are anagrams and spaces are ignored") do
-  #   expect("aaa bbb ccc".all_tests("abcabcabc")).to eq(true)
-  # end
+  it("return true even if words have different case") do
+    expect("Hello".all_tests("eollh")).to eq(["Words are equal lengths", "Words are not antigrams", "Words are anagrams", "First word is a word", "Second word is a word", "First word is not a palindrome", "Second word is not a palindrome"])
+  end
 end
