@@ -30,11 +30,7 @@ class Array
   def anagrams?(second_word)
     first_word = self
     second_word_checked = first_word.remove_if_present(second_word)
-    if second_word_checked.empty?
-      return true
-    else
-      return false
-    end
+    return second_word_checked.empty?
   end
 end
 
@@ -42,40 +38,28 @@ class Array
   def antigram?(second_word)
     first_word = self
     second_word_checked = first_word.remove_if_present(second_word)
-    if first_word.length() == second_word_checked.length()
-      return true
-    else
-      return false
-    end
+    return first_word.length() == second_word_checked.length()
   end
 end
 
 class String
   def format_string
-    phrase_formatted = self.downcase.gsub(/[^a-z0-9]/i, '')
-    return phrase_formatted
+    word_formatted = self.downcase.gsub(/[^a-z0-9]/i, '')
+    return word_formatted
   end
 end
 
 class String
   def palindrome?
     word_reversed = self.reverse()
-    if word_reversed == self
-      return true
-    else
-      return false
-    end
+    return word_reversed == self
   end
 end
 
 class String
   def equal_length?(second_word)
     first_word = self
-    if first_word.length() == second_word.length()
-      return true
-    else
-      return false
-    end
+    return first_word.length() == second_word.length()
   end
 end
 
