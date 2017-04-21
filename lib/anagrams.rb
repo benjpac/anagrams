@@ -102,7 +102,47 @@ class String
     second_word = second_word.format_string()
     first_word_array = self.split("")
     second_word_array = second_word.split("")
+    passed_tests = []
+    failed_tests = []
 
+    if first_word.equal_length?(second_word)
+      passed_tests.push("Words are equal lengths")
+    else
+      failed_tests.push("Words are not equal lengths")
+    end
 
+    if first_word.palindrome?
+      passed_tests.push("First word is a palindrome")
+    else
+      failed_tests.push("First word is not a palindrome")
+    end
+    if second_word.palindrome?
+      passed_tests.push("Second word is a palindrome")
+    else
+      failed_tests.push("Second word is not a palindrome")
+    end
+
+    if first_word_array.antigram?(second_word_array)
+      passed_tests.push("Words are a antigrams")
+    else
+      failed_tests.push("Words are not antigrams")
+    end
+
+    if first_word_array.anagrams?(second_word_array)
+      passed_tests.push("Words are a anagrams")
+    else
+      failed_tests.push("Words are not anagrams")
+    end
+
+    if first_word.word?
+      passed_tests.push("First word is a word")
+    else
+      failed_tests.push("First word is not a word")
+    end
+    if second_word.word?
+      passed_tests.push("Second word is a word")
+    else
+      failed_tests.push("Second word is not a word")
+    end
   end
 end
