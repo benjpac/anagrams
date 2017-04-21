@@ -59,6 +59,6 @@ class String
   def phrase_check(second_phrase)
     first_phrase = self.format_string()
     second_phrase = second_phrase.format_string()
-    first_phrase.anagrams(second_phrase)
+    first_phrase.anagrams?(second_phrase)
   end
 end
