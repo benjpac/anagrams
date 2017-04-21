@@ -15,33 +15,50 @@
 # Account for multiple words being anagrams or "antigrams." Spaces and punctuation shouldn't count (so they should be removed). You'll need to make sure that each word in the inputted phrases is really a word (passing condition #4 above). You may want to use a regular expression to remove additional characters.
 #
 # Bonus points: Make your method check a string of words and also a Fixnum.
-# class String
-#   def palindrome?
-#     self_formatted = self.downcase.gsub(/[^a-z0-9]/i, '')
-#     reversed_formatted = self_formatted.reverse()
-#     if reversed_formatted == self_formatted
-#       true
-#     else
-#       false
-#     end
-#   end
-# end
 
 class String
-  def anagrams
-    self_formatted = self.downcase.gsub(/[^a-z0-9]/i, '')
-    self_formatted_array = self_formatted.split("")
-    reversed_array = []
-    self_formatted_array.each() do |letter|
-      reversed_array.unshift(letter)
+  def format_string
+    phrase_formatted = self.downcase.gsub(/[^a-z0-9]/i, '')
+    phrase_formatted
+  end
+end
+
+class String
+  def anagrams?(second_word)
+    first_word = self.split("")
+    second_word = second_word.split("")
+    if first_word.length() != second_word.length()
+      return false
     end
-    reversed_formatted = reversed_array.join()
-    puts("word: " + self_formatted)
-    puts("reversed: " + reversed_formatted)
-    if reversed_formatted == self_formatted
+    first_word.each() do |letter|
+      if second_word.include?(letter)
+        letter_index = second_word.find_index(letter)
+        second_word.delete_at(letter_index)
+      end
+    end
+    if second_word.empty?
+      return true
+    else
+      return false
+    end
+  end
+end
+
+class String
+  def palindrome?
+    word_reversed = self.reverse()
+    if word_reversed == self
       true
     else
       false
     end
+  end
+end
+
+class String
+  def phrase_check(second_phrase)
+    first_phrase = self.format_string()
+    second_phrase = second_phrase.format_string()
+    first_phrase.anagrams(second_phrase)
   end
 end

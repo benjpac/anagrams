@@ -18,11 +18,13 @@ require('anagrams')
 # Account for multiple words being anagrams or "antigrams." Spaces and punctuation shouldn't count (so they should be removed). You'll need to make sure that each word in the inputted phrases is really a word (passing condition #4 above). You may want to use a regular expression to remove additional characters.
 
 describe('String#anagrams') do
+  it("Check if two words are anagrams.") do
+    expect("ruby".anagrams("bury")).to eq("These words are anagrams.")
+  end
+  it("Account for the possibility that words might have different cases but should still be anagrams") do
+    expect("Tea".anagrams("Eat")).to eq("These words are anagrams.")
+  end
   it("returns true for a word that is a palindrome") do
     expect("racecar".palindrome?()).to eq(true)
   end
-  it("returns 'These words are anagrams.' if two words are anagrams") do
-    expect("Tea".anagrams("Eat")).to eq("These words are anagrams.") 
-  end
-
 end

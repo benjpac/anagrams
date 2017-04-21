@@ -1,7 +1,7 @@
 source('https://rubygems.org')
 
-gem('sinatra')
 gem('sinatra-contrib')
-gem('capybara')
+# gem('capybara')
 gem('pry')
-gem('launchy')
+# gem('launchy')
+gem('sinatra')
