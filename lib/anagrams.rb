@@ -15,10 +15,10 @@ end
 class Array
   def remove_if_present(second_word)
     first_word = self
-    second_word_copy = second_word
+    second_word_copy = second_word.dup()
     first_word.each() do |letter|
-      if second_word.include?(letter)
-        letter_index = second_word.find_index(letter)
+      if second_word_copy.include?(letter)
+        letter_index = second_word_copy.find_index(letter)
         second_word_copy.delete_at(letter_index)
       end
     end
@@ -29,8 +29,7 @@ end
 class Array
   def anagrams?(second_word)
     first_word = self
-    copy = second_word
-    second_word_checked = first_word.remove_if_present(copy)
+    second_word_checked = first_word.remove_if_present(second_word)
     if second_word_checked.empty?
       return true
     else
@@ -42,8 +41,7 @@ end
 class Array
   def antigram?(second_word)
     first_word = self
-    copy = second_word
-    second_word_checked = first_word.remove_if_present(copy)
+    second_word_checked = first_word.remove_if_present(second_word)
     if first_word.length() == second_word_checked.length()
       return true
     else
@@ -85,28 +83,24 @@ class String
   def all_tests(second_word)
     first_word = self.format_string()
     second_word = second_word.format_string()
-    first_word_array = self.split("")
+    first_word_array = first_word.split("")
     second_word_array = second_word.split("")
-    puts second_word_array
     tests = []
     if first_word.equal_length?(second_word)
       tests.push("Words are equal lengths")
     else
       tests.push("Words are not equal lengths")
     end
-    puts second_word_array
     if first_word_array.antigram?(second_word_array)
       tests.push("Words are antigrams")
     else
       tests.push("Words are not antigrams")
     end
-    puts second_word_array
     if first_word_array.anagrams?(second_word_array)
       tests.push("Words are anagrams")
     else
       tests.push("Words are not anagrams")
     end
-    puts second_word_array
     if first_word_array.word?
       tests.push("First word is a word")
     else
@@ -115,9 +109,8 @@ class String
     if second_word_array.word?
       tests.push("Second word is a word")
     else
-      tests.push("Second word is not a word" + second_word_array.to_s)
+      tests.push("Second word is not a word")
     end
-    puts second_word_array
     if first_word.palindrome?
       tests.push("First word is a palindrome")
     else
@@ -128,7 +121,6 @@ class String
     else
       tests.push("Second word is not a palindrome")
     end
-    puts second_word
     return tests
   end
 end
