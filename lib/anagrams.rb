@@ -16,10 +16,10 @@
 #
 # Bonus points: Make your method check a string of words and also a Fixnum.
 
-class String
-  def format_string
-    phrase_formatted = self.downcase.gsub(/[^a-z0-9]/i, '')
-    phrase_formatted
+class Array
+  def word?
+    vowels = ["a", "o", "i", "u", "e"]
+
   end
 end
 
@@ -36,10 +36,9 @@ class Array
   end
 end
 
-class String
+class Array
   def anagrams?(second_word)
-    first_word = self.split("")
-    second_word = second_word.split("")
+    first_word = self
     second_word_checked = first_word.remove_if_present(second_word)
     if second_word_checked.empty?
       true
@@ -49,16 +48,22 @@ class String
   end
 end
 
-class String
+class Array
   def antigram?(second_word)
-    first_word = self.split("")
-    second_word = second_word.split("")
+    first_word = self
     second_word_checked = first_word.remove_if_present(second_word)
     if first_word.length() == second_word_checked.length()
       true
     else
       false
     end
+  end
+end
+
+class String
+  def format_string
+    phrase_formatted = self.downcase.gsub(/[^a-z0-9]/i, '')
+    phrase_formatted
   end
 end
 
@@ -74,12 +79,23 @@ class String
 end
 
 class String
-  def phrase_check(second_phrase)
-    first_phrase = self.format_string()
-    second_phrase = second_phrase.format_string()
-    if first_phrase.length() != second_phrase.length()
-      return false
+  def equal_length?(second_word)
+    first_word = self
+    if first_word.length() == second_word.length()
+      true
+    else
+      false
     end
-    first_phrase.anagrams?(second_phrase)
+  end
+end
+
+class String
+  def all_tests(second_word)
+    first_word = self.format_string()
+    second_word = second_word.format_string()
+    first_word_array = self.split("")
+    second_word_array = second_word.split("")
+
+
   end
 end
