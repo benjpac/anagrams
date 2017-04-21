@@ -23,23 +23,41 @@ class String
   end
 end
 
-class String
-  def anagrams?(second_word)
-    first_word = self.split("")
-    second_word = second_word.split("")
-    if first_word.length() != second_word.length()
-      return false
-    end
+class Array
+  def remove_if_present(second_word)
+    first_word = self
     first_word.each() do |letter|
       if second_word.include?(letter)
         letter_index = second_word.find_index(letter)
         second_word.delete_at(letter_index)
       end
     end
-    if second_word.empty?
-      return true
+    second_word
+  end
+end
+
+class String
+  def anagrams?(second_word)
+    first_word = self.split("")
+    second_word = second_word.split("")
+    second_word_checked = first_word.remove_if_present(second_word)
+    if second_word_checked.empty?
+      true
     else
-      return false
+      false
+    end
+  end
+end
+
+class String
+  def antigram?(second_word)
+    first_word = self.split("")
+    second_word = second_word.split("")
+    second_word_checked = first_word.remove_if_present(second_word)
+    if first_word.length() == second_word_checked.length()
+      true
+    else
+      false
     end
   end
 end
@@ -59,6 +77,9 @@ class String
   def phrase_check(second_phrase)
     first_phrase = self.format_string()
     second_phrase = second_phrase.format_string()
+    if first_phrase.length() != second_phrase.length()
+      return false
+    end
     first_phrase.anagrams?(second_phrase)
   end
 end
