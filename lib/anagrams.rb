@@ -18,8 +18,15 @@
 
 class Array
   def word?
-    vowels = ["a", "o", "i", "u", "e"]
-
+    word = self
+    vowels = ["a", "o", "i", "u", "e", "y"]
+    vowel_count = 0
+    word.each() do |letter|
+      if vowels.include?(letter)
+        vowel_count += 1
+      end
+    end
+    vowel_count > 0
   end
 end
 

@@ -14,6 +14,15 @@ describe('Array#anagrams?') do
   end
 end
 
+describe('Array#word?') do
+  it("return true if word has a vowel or y") do
+    expect(["r", "u", "b", "y"].word?()).to eq(true)
+  end
+  it("return false if word does not have a vowel or y") do
+    expect(["z", "w", "b", "s"].word?()).to eq(false)
+  end
+end
+
 describe('Array#remove_if_present') do
   it('returns second_word as array after checking if the letters are present in the first_word') do
     expect(["d", "o", "n", "k", "e", "y"].remove_if_present(["y", "e", "k", "n", "o", "d", "z"])).to eq(["z"])
