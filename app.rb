@@ -9,6 +9,12 @@ get('/') do
 end
 
 get('/anagrams_result') do
-  @display = params.fetch("first_word").all_tests(params.fetch("second_word"))
+  @first_word = params.fetch("first_word")
+  @second_word = params.fetch("second_word")
+  tests = @first_word.all_tests(@second_word)
+  @display = []
+  tests.each() do |test|
+    @display.push(test)
+  end
   erb(:anagrams_result)
 end
